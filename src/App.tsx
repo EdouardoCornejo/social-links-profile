@@ -1,6 +1,6 @@
-import "./App.css";
-import { Avatar, Card, Info, links } from "./components";
-import { ButtonList } from "./components/ButtonList";
+import './App.css';
+import { Avatar, Card, Info, links } from './components';
+import { ButtonList } from './components/ButtonList';
 
 function App() {
   return (
