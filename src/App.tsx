@@ -1,11 +1,12 @@
 import './App.css';
+import avatar from './assets/images/avatar-jessica.jpeg';
 import { Avatar, Card, Info, links } from './components';
 import { ButtonList } from './components/ButtonList';
 
 function App() {
   return (
     <Card>
-      <Avatar alt="avatar" url="/src/assets/images/avatar-jessica.jpeg" />
+      <Avatar alt="avatar" url={avatar} />
       <Info
         location="London, United Kingdom"
         name="Jessica Randall"

@@ -5,8 +5,8 @@ interface AvatarProps {
   alt: string;
 }
 
-export const Avatar: FC<AvatarProps> = () => (
+export const Avatar: FC<AvatarProps> = ({ alt, url }) => (
   <div className="avatar">
-    <img src="/src/assets/images/avatar-jessica.jpeg" alt="avatar" />
+    <img src={url} alt={alt} />
   </div>
 );
