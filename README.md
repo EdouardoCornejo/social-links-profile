@@ -163,7 +163,9 @@ social-links-profile/
 ├── .github/workflows/ci.yml
 ├── .husky/pre-commit
 ├── public/
-│   └── FEmentor.png             # Favicon
+│   ├── favicon.svg              # Favicon
+│   ├── favicon.ico              # Favicon de respaldo
+│   └── apple-touch-icon.png     # Icono de inicio en iOS
 ├── src/
 │   ├── assets/
 │   │   ├── fonts/               # Archivos de la fuente Inter (+ licencia OFL)
