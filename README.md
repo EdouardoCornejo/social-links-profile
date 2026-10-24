@@ -69,16 +69,16 @@ Vite muestra una URL local (por defecto `http://localhost:5173`). El script `pre
 
 ### Scripts
 
-| Comando             | Comando real                                                   | Qué hace                                                    |
-| ------------------- | -------------------------------------------------------------- | ----------------------------------------------------------- |
-| `yarn dev`          | `vite`                                                         | Servidor de desarrollo con HMR.                             |
-| `yarn build`        | `tsc -b && vite build`                                         | Comprueba tipos y genera el bundle en `dist/`.              |
-| `yarn preview`      | `vite preview`                                                 | Sirve localmente el `dist/` generado.                       |
-| `yarn lint`         | `eslint . --report-unused-disable-directives --max-warnings 0` | Lint del repo; cualquier warning hace fallar la ejecución.  |
-| `yarn lint:fix`     | `eslint . … --fix`                                             | Igual que `lint`, aplicando correcciones automáticas.       |
-| `yarn format:fix`   | `prettier --write .`                                           | Formatea todos los archivos soportados.                     |
-| `yarn format:check` | `prettier --check .`                                           | Falla si algún archivo no está formateado (lo usa la CI).   |
-| `yarn prepare`      | `husky`                                                        | Instala los Git hooks; se ejecuta tras `yarn install`.      |
+| Comando             | Comando real                                                   | Qué hace                                                   |
+| ------------------- | -------------------------------------------------------------- | ---------------------------------------------------------- |
+| `yarn dev`          | `vite`                                                         | Servidor de desarrollo con HMR.                            |
+| `yarn build`        | `tsc -b && vite build`                                         | Comprueba tipos y genera el bundle en `dist/`.             |
+| `yarn preview`      | `vite preview`                                                 | Sirve localmente el `dist/` generado.                      |
+| `yarn lint`         | `eslint . --report-unused-disable-directives --max-warnings 0` | Lint del repo; cualquier warning hace fallar la ejecución. |
+| `yarn lint:fix`     | `eslint . … --fix`                                             | Igual que `lint`, aplicando correcciones automáticas.      |
+| `yarn format:fix`   | `prettier --write .`                                           | Formatea todos los archivos soportados.                    |
+| `yarn format:check` | `prettier --check .`                                           | Falla si algún archivo no está formateado (lo usa la CI).  |
+| `yarn prepare`      | `husky`                                                        | Instala los Git hooks; se ejecuta tras `yarn install`.     |
 
 ---
 
@@ -102,7 +102,7 @@ Cada componente es un `FC` tipado en su propia carpeta con `index.tsx`:
 
 ### 3. Estilos
 
-CSS global sin preprocesador: `src/index.css` define el fondo oscuro, el _reset_ básico y las clases `text-preset-1`, `text-preset-2` y `text-preset-2-bold`; `src/App.css` contiene el layout de la tarjeta, el avatar y los botones.
+CSS global sin preprocesador: `src/index.css` carga la fuente **Inter** autoalojada con `@font-face` (pesos 400, 600 y 700 desde `src/assets/fonts/static`, `font-display: swap`), define el fondo oscuro, el _reset_ básico y las clases `text-preset-1`, `text-preset-2` y `text-preset-2-bold`; `src/App.css` contiene el layout de la tarjeta, el avatar y los botones.
 
 ### Flujo de renderizado
 
@@ -190,13 +190,13 @@ social-links-profile/
 
 ## Personalización
 
-| Qué                   | Dónde                            | Valor por defecto                    |
-| --------------------- | -------------------------------- | ------------------------------------ |
-| Enlaces sociales      | `links` en `components/data`     | 5 enlaces genéricos                  |
-| Nombre / ubicación / bio | _Props_ de `<Info />` en `App.tsx` | Jessica Randall, London, United Kingdom |
-| Color de acento       | `.location` y `:hover` en `App.css` | `#c4f82a`                         |
-| Fondo de la tarjeta   | `.card` en `App.css`             | `#1f1f1f`                            |
-| Ancho máximo          | `.card` en `App.css`             | `384px`                              |
+| Qué                      | Dónde                               | Valor por defecto                       |
+| ------------------------ | ----------------------------------- | --------------------------------------- |
+| Enlaces sociales         | `links` en `components/data`        | 5 enlaces genéricos                     |
+| Nombre / ubicación / bio | _Props_ de `<Info />` en `App.tsx`  | Jessica Randall, London, United Kingdom |
+| Color de acento          | `.location` y `:hover` en `App.css` | `#c4f82a`                               |
+| Fondo de la tarjeta      | `.card` en `App.css`                | `#1f1f1f`                               |
+| Ancho máximo             | `.card` en `App.css`                | `384px`                                 |
 
 > Las URLs de `links` son genéricas (por ejemplo `https://www.github.com`); reemplázalas por tus perfiles reales.
 
