@@ -1,43 +1,62 @@
 # Social Links Profile
 
-A single-screen profile card that shows an avatar, a short bio, and a list of social links. Built as a [Frontend Mentor](https://www.frontendmentor.io) challenge solution, it doubles as a reference setup for a small React + TypeScript + Vite app with strict linting, formatting, pre-commit hooks, and CI.
+Tarjeta de perfil de una sola pantalla con **avatar, ubicación, una breve bio y una lista de enlaces a redes sociales**, construida con **React 19 + TypeScript + Vite**. Es la solución al reto [Social links profile de Frontend Mentor](https://www.frontendmentor.io/challenges) y sirve también como plantilla de referencia para una app pequeña con **lint estricto, Prettier, _pre-commit hooks_ y CI**.
 
-Audience: developers who want to read or extend the code.
+**Demo:** [social-links-profile-jet-nine.vercel.app](https://social-links-profile-jet-nine.vercel.app)
 
-## Demo
+![Tech](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![Tech](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
+![Tech](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![Tech](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
+![Tech](https://img.shields.io/badge/Prettier-3-F7B93E?logo=prettier&logoColor=black)
 
-Live: **https://social-links-profile-jet-nine.vercel.app/**
+---
 
-<!-- Add screenshots at ./docs/desktop.png and ./docs/mobile.png, then uncomment: -->
-<!-- ![Desktop](./docs/desktop.png) -->
-<!-- ![Mobile](./docs/mobile.png) -->
+## Tabla de contenidos
 
-## Stack
+- [Social Links Profile](#social-links-profile)
+  - [Tabla de contenidos](#tabla-de-contenidos)
+  - [Qué hace el proyecto](#qué-hace-el-proyecto)
+  - [Cómo ejecutar el proyecto](#cómo-ejecutar-el-proyecto)
+    - [Requisitos](#requisitos)
+    - [Instalación](#instalación)
+    - [Scripts](#scripts)
+  - [Cómo funciona](#cómo-funciona)
+    - [1. `src/App.tsx`](#1-srcapptsx)
+    - [2. Componentes (`src/components`)](#2-componentes-srccomponents)
+    - [3. Estilos](#3-estilos)
+    - [Flujo de renderizado](#flujo-de-renderizado)
+  - [Cómo extenderlo](#cómo-extenderlo)
+  - [Calidad y CI](#calidad-y-ci)
+  - [Tecnologías](#tecnologías)
+  - [Estructura del proyecto](#estructura-del-proyecto)
+  - [Personalización](#personalización)
+  - [Licencia](#licencia)
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-3-F7B93E?logo=prettier&logoColor=black)
+---
 
-## Features
+## Qué hace el proyecto
 
-- Profile card composed from small presentational components: [`Card`](src/components/Card/index.tsx), [`Avatar`](src/components/Avatar/index.tsx), [`Info`](src/components/Info/index.tsx), [`ButtonList`](src/components/ButtonList/index.tsx).
-- Social links come from a single static array in [src/components/data/index.ts](src/components/data/index.ts).
-- No state library and no runtime data fetching — every component takes plain props.
-- External links open in a new tab with `rel="noopener noreferrer"` ([src/components/ButtonList/index.tsx](src/components/ButtonList/index.tsx)).
-- Self-hosted Inter font files under [src/assets/fonts/](src/assets/fonts/); typography scale via `text-preset-*` classes in [src/index.css](src/index.css).
-- Type-checked ESLint flat config with `typescript-eslint` `recommendedTypeChecked` ([eslint.config.js](eslint.config.js)).
-- Pre-commit hook runs `lint-staged` + a full build ([.husky/pre-commit](.husky/pre-commit)); GitHub Actions runs format check, lint, and build ([.github/workflows/ci.yml](.github/workflows/ci.yml)).
+- **Tarjeta de perfil** compuesta por componentes presentacionales pequeños: `Card`, `Avatar`, `Info` y `ButtonList`.
+- **Enlaces sociales definidos como datos** en un único array (`links`): GitHub, Frontend Mentor, LinkedIn, Twitter e Instagram.
+- **Enlaces externos seguros**: se abren en una pestaña nueva con `rel="noopener noreferrer"`.
+- **Estados _hover_ y _focus_** en los botones (fondo verde lima `#c4f82a`) con transición.
+- **_Responsive_**: la tarjeta tiene un ancho máximo de 384px y reduce su _padding_ por debajo de 420px.
+- **Escala tipográfica** mediante clases `text-preset-*`.
+- Sin librería de estado ni peticiones de red: cada componente solo renderiza sus _props_.
 
-## Prerequisites
+---
 
-| Tool    | Version                | Source                                                                                       |
-| ------- | ---------------------- | -------------------------------------------------------------------------------------------- |
-| Node.js | `>=22` (CI runs on 24) | [package.json](package.json) `engines`, [.github/workflows/ci.yml](.github/workflows/ci.yml) |
-| Yarn    | 1.x (Classic)          | [yarn.lock](yarn.lock)                                                                       |
+## Cómo ejecutar el proyecto
 
-## Quick start
+### Requisitos
+
+| Herramienta | Versión                    |
+| ----------- | -------------------------- |
+| Node.js     | `>=22` (la CI usa Node 24) |
+| Yarn        | 1.x (Classic)              |
+
+### Instalación
 
 ```bash
 git clone git@github.com:EdouardoCornejo/social-links-profile.git
@@ -46,75 +65,143 @@ yarn install
 yarn dev
 ```
 
-Vite prints a local URL (default `http://localhost:5173`). The `prepare` script installs the Husky git hooks during `yarn install`.
+Vite muestra una URL local (por defecto `http://localhost:5173`). El script `prepare` instala los Git hooks de Husky durante `yarn install`.
 
-## Scripts
+### Scripts
 
-All scripts are defined in [package.json](package.json).
+| Comando             | Comando real                                                   | Qué hace                                                    |
+| ------------------- | -------------------------------------------------------------- | ----------------------------------------------------------- |
+| `yarn dev`          | `vite`                                                         | Servidor de desarrollo con HMR.                             |
+| `yarn build`        | `tsc -b && vite build`                                         | Comprueba tipos y genera el bundle en `dist/`.              |
+| `yarn preview`      | `vite preview`                                                 | Sirve localmente el `dist/` generado.                       |
+| `yarn lint`         | `eslint . --report-unused-disable-directives --max-warnings 0` | Lint del repo; cualquier warning hace fallar la ejecución.  |
+| `yarn lint:fix`     | `eslint . … --fix`                                             | Igual que `lint`, aplicando correcciones automáticas.       |
+| `yarn format:fix`   | `prettier --write .`                                           | Formatea todos los archivos soportados.                     |
+| `yarn format:check` | `prettier --check .`                                           | Falla si algún archivo no está formateado (lo usa la CI).   |
+| `yarn prepare`      | `husky`                                                        | Instala los Git hooks; se ejecuta tras `yarn install`.      |
 
-| Script              | Command                                                        | What it does                                                     |
-| ------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `yarn dev`          | `vite`                                                         | Starts the Vite dev server with HMR.                             |
-| `yarn build`        | `tsc -b && vite build`                                         | Type-checks the project references, then bundles to `dist/`.     |
-| `yarn preview`      | `vite preview`                                                 | Serves the built `dist/` locally to verify the production build. |
-| `yarn lint`         | `eslint . --report-unused-disable-directives --max-warnings 0` | Lints the repo; any warning fails the run.                       |
-| `yarn lint:fix`     | `eslint . … --fix`                                             | Same as `lint`, applying autofixes.                              |
-| `yarn format:fix`   | `prettier --write .`                                           | Formats every supported file in place.                           |
-| `yarn format:check` | `prettier --check .`                                           | Fails if any file is not Prettier-formatted (used in CI).        |
-| `yarn prepare`      | `husky`                                                        | Installs git hooks; runs automatically after `yarn install`.     |
+---
 
-`lint-staged` (configured in [package.json](package.json)) runs `eslint --fix` + `prettier` on staged `*.{ts,tsx}` and `prettier` on staged `*.{js,cjs,mjs,json,css,md}`.
+## Cómo funciona
 
-## Architecture
+### 1. `src/App.tsx`
 
-The app is a static component tree with no shared state. [src/main.tsx](src/main.tsx) mounts `<App />` in `<StrictMode>`; [src/App.tsx](src/App.tsx) hard-codes the profile content (name, location, bio, avatar) and composes the components. Each component under [src/components/](src/components/) is a typed function component (`FC`) that only renders its props — one folder per component with an `index.tsx`, re-exported through the [src/components/index.ts](src/components/index.ts) barrel. Styling is global CSS: [src/index.css](src/index.css) holds the `text-preset-*` type scale, [src/App.css](src/App.css) the layout classes.
+`main.tsx` monta `<App />` en `<StrictMode>`. `App` contiene el contenido del perfil (nombre, ubicación, bio e imagen del avatar) y compone la tarjeta pasando todo por _props_.
+
+### 2. Componentes (`src/components`)
+
+Cada componente es un `FC` tipado en su propia carpeta con `index.tsx`:
+
+- **`Card`** — contenedor de la tarjeta (`children`).
+- **`Avatar`** — imagen circular de 88px (`url`, `alt`).
+- **`Info`** — nombre, ubicación y descripción (`name`, `location`, `description`).
+- **`ButtonList`** — recorre `links` y renderiza un `<a>` por enlace, usando `link.name` como `key`.
+- **`data/index.ts`** — exporta el array `links` (`{ name, url }`).
+
+`components/index.ts` re-exporta `Avatar`, `Card`, `data` e `Info`; `ButtonList` se importa directamente desde su carpeta.
+
+### 3. Estilos
+
+CSS global sin preprocesador: `src/index.css` define el fondo oscuro, el _reset_ básico y las clases `text-preset-1`, `text-preset-2` y `text-preset-2-bold`; `src/App.css` contiene el layout de la tarjeta, el avatar y los botones.
+
+### Flujo de renderizado
 
 ```
-src/
-├── main.tsx           # Entry point
-├── App.tsx            # Composes the card; owns the profile content
-├── index.css / App.css
-├── assets/            # Self-hosted Inter fonts + avatar image
-└── components/
-    ├── index.ts       # Barrel export
-    ├── data/index.ts  # `links` array — the social links
-    └── <Component>/index.tsx   # Avatar, Card, Info, ButtonList
+main.tsx
+  └─ <App />
+       └─ Card
+            ├─ Avatar      ← avatar-jessica.jpeg
+            ├─ Info        ← name, location, description
+            └─ ButtonList  ← links (components/data)
+                  └─ <li><a target="_blank" rel="noopener noreferrer">…</a></li>
 ```
 
-## How to extend
+---
 
-**Add or change a social link** — edit the `links` array in [src/components/data/index.ts](src/components/data/index.ts):
+## Cómo extenderlo
+
+**Añadir o cambiar un enlace**: edita el array `links` en `src/components/data/index.ts`. `ButtonList` renderiza cada entrada y usa `name` como `key`, así que mantén los nombres únicos.
 
 ```ts
 export const links = [
-  { name: 'GitHub', url: 'https://github.com/your-handle' },
-  { name: 'Mastodon', url: 'https://mastodon.social/@you' }, // new entry
+  { name: 'GitHub', url: 'https://github.com/tu-usuario' },
+  { name: 'Mastodon', url: 'https://mastodon.social/@tu-usuario' }, // nueva entrada
   // …
 ];
 ```
 
-That is the only place to touch. [`ButtonList`](src/components/ButtonList/index.tsx) renders every entry and keys each item by `link.name`, so keep names unique.
+**Cambiar la identidad del perfil**: modifica las _props_ de `<Info />` y `<Avatar />` en `src/App.tsx` y reemplaza `src/assets/images/avatar-jessica.jpeg` (actualizando el import).
 
-**Change the profile identity** — edit the props passed to `<Info />` and `<Avatar />` in [src/App.tsx](src/App.tsx), and replace `src/assets/images/avatar-jessica.jpeg` (update the import name to match).
+**Añadir un componente**: crea `src/components/<Nombre>/index.tsx` exportando un `FC` tipado, añade `export * from './<Nombre>';` a `src/components/index.ts` y úsalo en `App.tsx`.
 
-**Add a new component** — create `src/components/<Name>/index.tsx` exporting a typed `FC`, add `export * from './<Name>';` to [src/components/index.ts](src/components/index.ts), then use it in [src/App.tsx](src/App.tsx).
+---
 
-## Quality
+## Calidad y CI
 
-- **Lint** — `yarn lint`. Flat ESLint config ([eslint.config.js](eslint.config.js)) with `@eslint/js` recommended, `typescript-eslint` `recommendedTypeChecked`, `react-hooks`, and `react-refresh`. Zero warnings allowed. `enum` and `namespace` are banned via `no-restricted-syntax` to keep syntax erasable.
-- **Format** — `yarn format:check` / `yarn format:fix`. Prettier settings in [.prettierrc.json](.prettierrc.json): semicolons, single quotes, trailing commas everywhere, 100-char width. `eslint-config-prettier` disables conflicting lint rules.
-- **Pre-commit** — [.husky/pre-commit](.husky/pre-commit) runs `yarn lint-staged` then `yarn build`, so a commit fails on a lint error or a type/build error.
-- **CI** — [.github/workflows/ci.yml](.github/workflows/ci.yml) runs on push and PR to `main`: `yarn install --frozen-lockfile`, then `format:check`, `lint`, and `build` on Node 24.
-- **TypeScript** — `strict`, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`, `erasableSyntaxOnly` ([tsconfig.app.json](tsconfig.app.json)).
+- **Lint** — `eslint.config.js` (flat config) con `@eslint/js` recomendado, `typescript-eslint` `recommendedTypeChecked`, `react-hooks` y `react-refresh`; 0 warnings. `enum` y `namespace` están prohibidos con `no-restricted-syntax`.
+- **Formato** — Prettier (`.prettierrc.json`: punto y coma, comillas simples, `trailingComma: all`, 100 columnas). `eslint-config-prettier` desactiva las reglas en conflicto.
+- **Pre-commit** — `.husky/pre-commit` ejecuta `yarn lint-staged` y después `yarn build`, así que un commit falla ante errores de lint, tipos o build.
+- **CI** — `.github/workflows/ci.yml` corre en push y PR a `main` con Node 24: `yarn install --frozen-lockfile`, `format:check`, `lint` y `build`.
+- **TypeScript** — `strict`, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch` y `erasableSyntaxOnly`.
+- **Deploy** — `vercel.json` desactiva el auto-deploy desde Git.
 
-## Roadmap
+---
 
-- Replace the placeholder social URLs in [src/components/data/index.ts](src/components/data/index.ts) with real profiles.
-- Move the hard-coded profile content out of [src/App.tsx](src/App.tsx) into a data module (mirroring `links`).
-- Fix the page `<title>` and favicon reference in [index.html](index.html) (still "Vite + React + TS", favicon typed as SVG but points to a PNG).
-- Add component tests (e.g. Vitest + Testing Library) and wire them into CI.
-- Accessibility pass: descriptive `alt` text for the avatar, focus-visible styles for the links.
+## Tecnologías
 
-## License
+- **React 19** + **TypeScript 5.9**
+- **Vite 8**
+- **CSS** plano (sin framework de estilos).
+- **ESLint 9**, **Prettier 3**, **Husky**, **lint-staged**.
 
-No license. This is a private personal challenge project; all rights reserved.
+---
+
+## Estructura del proyecto
+
+```
+social-links-profile/
+├── .github/workflows/ci.yml
+├── .husky/pre-commit
+├── public/
+│   └── FEmentor.png             # Favicon
+├── src/
+│   ├── assets/
+│   │   ├── fonts/               # Archivos de la fuente Inter (+ licencia OFL)
+│   │   └── images/avatar-jessica.jpeg
+│   ├── components/
+│   │   ├── Avatar/index.tsx
+│   │   ├── ButtonList/index.tsx
+│   │   ├── Card/index.tsx
+│   │   ├── Info/index.tsx
+│   │   ├── data/index.ts        # Array `links`
+│   │   └── index.ts             # Barrel
+│   ├── App.tsx                  # Contenido del perfil
+│   ├── App.css                  # Layout de la tarjeta
+│   ├── index.css                # Reset y escala tipográfica
+│   └── main.tsx
+├── eslint.config.js
+├── index.html
+├── vercel.json
+├── vite.config.ts
+└── package.json
+```
+
+---
+
+## Personalización
+
+| Qué                   | Dónde                            | Valor por defecto                    |
+| --------------------- | -------------------------------- | ------------------------------------ |
+| Enlaces sociales      | `links` en `components/data`     | 5 enlaces genéricos                  |
+| Nombre / ubicación / bio | _Props_ de `<Info />` en `App.tsx` | Jessica Randall, London, United Kingdom |
+| Color de acento       | `.location` y `:hover` en `App.css` | `#c4f82a`                         |
+| Fondo de la tarjeta   | `.card` en `App.css`             | `#1f1f1f`                            |
+| Ancho máximo          | `.card` en `App.css`             | `384px`                              |
+
+> Las URLs de `links` son genéricas (por ejemplo `https://www.github.com`); reemplázalas por tus perfiles reales.
+
+---
+
+## Licencia
+
+Sin licencia. Proyecto personal de práctica basado en un reto de [Frontend Mentor](https://www.frontendmentor.io); todos los derechos reservados.
